@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import Game
 
+
 def scrape (platform):
     base_url = 'https://www.metacritic.com/browse/games/release-date/coming-soon/{0}/date?page={1}'
 
@@ -48,10 +49,3 @@ def scrape (platform):
     
     return results
 
-def main ():
-    print (scrape ("ps5")[0])
-    # scrape ("switch")
-    # scrape ("xbox-series-x")
-
-if __name__ == "__main__":
-    main ()
