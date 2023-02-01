@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import Game
-
+from datetime import datetime
 
 def scrape (platform):
     base_url = 'https://www.metacritic.com/browse/games/release-date/coming-soon/{0}/date?page={1}'
@@ -37,7 +37,7 @@ def scrape (platform):
             for gameData in gameList:
                 title = gameData.find ('h3').text
 
-                releaseDate = gameData.find ('div', class_='clamp-details').find ('span', class_='').text
+                releaseDate = datetime.strptime(gameData.find ('div', class_='clamp-details').find ('span', class_='').text,  '%B %d, %Y')
 
                 game = Game.Game (title, releaseDate)
 

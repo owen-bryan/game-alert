@@ -1,17 +1,26 @@
 
 from Scrapper import scrape
-from StoreData import writeToFile, storeInDB
+from DB import  storeInDB, getGamesFromDB
 
-from Alerts import sendAlert
+from Alerts import sendAlertOne, sendAlerts
+
+from datetime import datetime
+
+    
+def dailyAlerts ():
+    games = getGamesFromDB (datetime.now())
+
+    sendAlerts (games)
+
+def dailyScrape ():
+    storeInDB ((scrape ('ps5'), 'ps5'))
+    # storeInDB ((scrape ('switch'), 'switch'))
+    # storeInDB ((scrape ('xbox-series-x'), 'xbox-series-x'))
+
 
 def main ():
-    # scrape ("ps5")
-    # scrape ("switch")
-    # scrape ("xbox-series-x")
-    # writeToFile (scrape("ps5"), "ps5")
-   games = scrape ("ps5")
-   sendAlert (games [0])
-   
+    dailyScrape ()
+    dailyAlerts ()
 
 if __name__ == "__main__":
-    main ()
+    main()
