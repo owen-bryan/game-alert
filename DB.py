@@ -69,3 +69,25 @@ def getGamesFromDB (date):
         return results
     except Exception as e:
         print ("Unknown err has occured.", str(e))
+
+def clearOld (date):
+    try:
+        load_dotenv (find_dotenv())
+        mongo_url = os.getenv('MONGO_URL')
+
+        print ('USING DATABASE AT {0}'.format (mongo_url))
+
+        client = pymongo.MongoClient (mongo_url)
+        GameAlert = client ['GameAlert']
+        releaseDates = GameAlert ['ReleaseDates']
+
+
+        # print (datetime.now())
+        results = releaseDates.delete_many({'release_date' : {'$lte' : date}})
+
+        if results.deleted_count > 0:
+            return True
+
+        return False
+    except Exception as e:
+        print ("Unknown err has occured.", str(e))
