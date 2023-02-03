@@ -30,22 +30,15 @@ def scrape (platform):
         gameList = soup.find_all ('tr', class_='')
 
         if gameList :
-            # print (gameLists)
-
-            # gameList = gameList.find_all ('tr', class_ = '')
-            # print ("page: {}".format(i))
             for gameData in gameList:
                 title = gameData.find ('h3').text
 
                 releaseDate = datetime.strptime(gameData.find ('div', class_='clamp-details').find ('span', class_='').text,  '%B %d, %Y')
 
                 game = Game.Game (title, releaseDate)
-
+                
                 results.append (game)
 
-                # print ("{0} Releasing: {1}".format (title, releaseDate))
-
-        # print (gameList.find_all ('tr', class_ = ''))
-    
+    # print (results[0].title)
     return results
 
