@@ -1,5 +1,5 @@
 
-from GameAlert.Scrapper import scrape
+from Scrapper import scrape
 from DB import  storeInDB, getGamesFromDB, clearOld
 
 from Alerts import sendAlertOne, sendAlerts

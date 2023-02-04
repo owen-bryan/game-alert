@@ -12,4 +12,4 @@ def sendAlerts (games, platform):
         output += "{0}\n".format (game['title'])
     
 
-    toast.show_toast ("Game Alert", output)
+    toast.show_toast ("Game Alert", output, icon_path=None, duration=10)

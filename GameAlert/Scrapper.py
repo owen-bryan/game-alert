@@ -14,7 +14,6 @@ def scrape (platform):
 
     last_page_span = soup.find ('a', class_="page_num")
 
-    # print (last_page.text)
     last_page = 0
 
     if last_page_span:
@@ -39,6 +38,5 @@ def scrape (platform):
                 
                 results.append (game)
 
-    # print (results[0].title)
     return results
 
