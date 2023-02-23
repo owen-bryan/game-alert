@@ -7,9 +7,9 @@ def sendAlertOne (game):
 def sendAlerts (games, platform):
     toast = ToastNotifier ()
 
-    output = "Games released today for {0} :\n".format(platform)
+    output = "Games released today for {0} :\n".format (platform)
     for game in games :
         output += "{0}\n".format (game['title'])
     
 
-    toast.show_toast ("Game Alert", output, icon_path=None, duration=10)
+    toast.show_toast ("{0} games released today".format (platform), output, icon_path=None, duration=10)
